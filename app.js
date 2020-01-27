@@ -39,18 +39,18 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-var MongoClient = require('mongodb').MongoClient
+var MongoClient = require('mongodb').MongoClient;
+var db;
+MongoClient.connect('mongodb://localhost:27017/MySportPass', function (err, client) {
+  if (err) throw err;
 
-MongoClient.connect('mongodb://localhost:27017/animals', function (err, client) {
-  if (err) throw err
+  db = client.db('MySportPass');
 
-  var db = client.db('animals')
+  db.collection('users').find().toArray(function (err, result) {
+    if (err) throw err;
 
-  db.collection('mammals').find().toArray(function (err, result) {
-    if (err) throw err
-
-    console.log(result)
+    console.log(result);
   })
-})
+});
 
 module.exports = app;

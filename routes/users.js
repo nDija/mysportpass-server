@@ -10,6 +10,13 @@ router.get('/', function(req, res, next) {
 /* add user. */
 router.post('/', function(req, res, next) {
   console.log(req.body);
+
+  db.collection('users').save(req.body, (err, result) => {
+    if (err) return console.log(err);
+
+    console.log('saved to database');
+  });
+
   res.send(req.body);
 });
 
