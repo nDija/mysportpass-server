@@ -7,4 +7,4 @@ DEBUG=server:* npm start
 
 npm run dev 
 
-mocha -R spec spec.js
+mocha -R spec spec.js --exit

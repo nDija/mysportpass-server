@@ -3,9 +3,12 @@ describe('loading express', function () {
     var app;
     beforeEach(function () {
         app = require('./app');
+        server = app.listen(8080, () => {
+            console.log('JSON Server is running');
+        });
     });
     afterEach(function () {
-        app.close
+        server.close();
     });
     it('responds to /', function testSlash(done) {
         request(app)
