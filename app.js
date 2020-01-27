@@ -41,8 +41,7 @@ app.use(function(err, req, res, next) {
 });
 
 MongoClient.connect('mongodb://' + envi.dburl + ':' + envi.dbPort + '/' + envi.db,
-    { useNewUrlParser: true,
-              useUnifiedTopology: true},
+    {useUnifiedTopology: true, useNewUrlParser: true},
     function (err, client) {
   if (err) throw err;
 
