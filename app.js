@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var MongoClient = require('mongodb').MongoClient;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -39,7 +40,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-var MongoClient = require('mongodb').MongoClient;
 MongoClient.connect('mongodb://localhost:27017/MySportPass', function (err, client) {
   if (err) throw err;
 
