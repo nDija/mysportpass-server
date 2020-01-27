@@ -40,7 +40,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-MongoClient.connect('mongodb://localhost:27017/MySportPass', function (err, client) {
+MongoClient.connect('mongodb://localhost:27017/MySportPass',
+    { useNewUrlParser: true,
+              useUnifiedTopology: true},
+    function (err, client) {
   if (err) throw err;
 
   db = client.db('MySportPass');
@@ -48,7 +51,7 @@ MongoClient.connect('mongodb://localhost:27017/MySportPass', function (err, clie
   db.collection('users').find().toArray(function (err, result) {
     if (err) throw err;
 
-    console.log(result);
+    //console.log(result);
   })
 });
 
