@@ -3,7 +3,10 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  db.collection('users').find().toArray(function(err, results) {
+    console.log(results);
+    res.send(results);
+  })
 });
 
 
