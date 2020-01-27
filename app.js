@@ -40,7 +40,6 @@ app.use(function(err, req, res, next) {
 });
 
 var MongoClient = require('mongodb').MongoClient;
-var db;
 MongoClient.connect('mongodb://localhost:27017/MySportPass', function (err, client) {
   if (err) throw err;
 
