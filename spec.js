@@ -4,7 +4,7 @@ describe('loading express', function () {
     beforeEach(function () {
         app = require('./app');
         server = app.listen(8080, () => {
-            console.log('JSON Server is running');
+            //console.log('JSON Server is running');
         });
     });
     afterEach(function () {
@@ -17,7 +17,7 @@ describe('loading express', function () {
     });
     it('responds to /users', function testSlash(done) {
         request(app)
-            .get('/')
+            .get('/users')
             .expect(200, done);
     });
     it('404 everything else', function testPath(done) {
