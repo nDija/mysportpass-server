@@ -11,10 +11,10 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   console.log(req.body);
 
-  db.collection('users').save(req.body, (err, result) => {
+  db.collection('users').insertOne(req.body, (err, result) => {
     if (err) return console.log(err);
 
-    console.log('saved to database');
+    console.log('saved to database: ' + result);
   });
 
   res.send(req.body);
