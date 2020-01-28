@@ -3,11 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var MongoClient = require('mongodb').MongoClient;
-var environments = require('./environment.json');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var envi = eval('environments.' + process.env.NODE_ENV);
 
 var app = express();
 
@@ -38,14 +35,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
-
-MongoClient.connect('mongodb://' + envi.dburl + ':' + envi.dbPort + '/' + envi.db,
-    {useUnifiedTopology: true, useNewUrlParser: true},
-    function (err, client) {
-  if (err) throw err;
-
-  db = client.db(envi.db);
 });
 
 module.exports = app;

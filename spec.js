@@ -6,12 +6,12 @@ describe('loading express', function () {
         app = require('./app');
         server = app.listen(8080, () => {
             //console.log('JSON Server is running');
-            /*db.dropCollection('users');
+            db.dropCollection('users');
             db.collection('users').insertMany(users, (err, result) => {
                 if (err) return console.log(err);
 
                 console.log('saved to database: ' + result);
-            });*/
+            });
         });
 
     });
