@@ -2,11 +2,14 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var mongoose = require('mongoose');
 
 var app = express();
+
+mongoose.Promise = global.Promise;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,5 +39,19 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+let _envFile = require('./environments.json');
+let _env = eval('_envFile.' + process.env.NODE_ENV);
+const url = 'mongodb://' + _env.dburl + ':' + _env.dbport + '/' + _env.db;
+mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => {
+      console.log('mongodb started.');
+      app.listen(8000, () => {
+        console.log('Server started on 8000');
+      });
+    }).catch(() => {
+  console.log('Mongodb connection failed.');
+})
+
 
 module.exports = app;

@@ -1,29 +1,14 @@
-var express = require('express');
-var mongoHelper = require('../helper/mongoHelper');
-
-var db = mongoHelper.getDb();
+const express = require('express');
+const UserController = require('../controllers/UserController');
 
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  db.collection('users').find().toArray(function(err, results) {
-    res.send(results);
-  })
-});
-
+router.get('/', UserController.findUsers);
+router.get('/email/', UserController.findByEmail);
 /* add user. */
-router.post('/', function(req, res, next) {
-  console.log(req.body);
-
-  db.collection('users').insertOne(req.body, (err, result) => {
-    if (err) {
-      res.send(err);
-      return console.log(err);
-    }
-    res.send(result);
-    console.log('saved to database: ' + result);
-  });
-});
+router.post('/', UserController.createUser);
 
 module.exports = router;
+
+
