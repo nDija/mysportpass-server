@@ -3,16 +3,22 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "babel": {
+    "presets": ["@babel/preset-env"]
+  },
   "scripts": {
-    "start": "cross-env NODE_ENV=production  node ./bin/www -r esm",
-    "dev": "cross-env NODE_ENV=development nodemon ./bin/www -r esm",
-    "test": "cross-env NODE_ENV=test mocha -R spec spec.js --exit -r esm"
+    "start": "cross-env NODE_ENV=production  node bin/www.js",
+    "dev": "cross-env NODE_ENV=development nodemon bin/www.js",
+    "test": "cross-env NODE_ENV=test mocha -R spec spec.js --exit",
+    "transpile": "babel ./ --out-dir dist-server"
   },
   "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
     "cookie-parser": "~1.4.4",
     "cross-env": "^7.0.0",
     "debug": "~2.6.9",
-    "esm": "^3.2.25",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "mocha": "^7.0.1",
