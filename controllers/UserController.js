@@ -1,5 +1,4 @@
-const UserRepository = require('../models/repositories/UserRepository.js');
-//const querystring = require('querystring');
+import UserRepository from '../models/repositories/UserRepository.js';
 
 function createUser(req, res) {
     const user = req.body;
@@ -38,6 +37,6 @@ function findUsers(req, res) {
     });
 }
 
-module.exports.createUser = createUser;
-module.exports.findByEmail = findByEmail;
-module.exports.findUsers = findUsers;
+export default createUser = createUser;
+export default findByEmail = findByEmail;
+export default findUsers = findUsers;

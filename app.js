@@ -1,13 +1,17 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-const logger = require('morgan');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var mongoose = require('mongoose');
+import createError from 'http-errors';
+import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
 
-var app = express();
+import indexRouter from './routes/index';
+import usersRouter from './routes/users';
+import mongoose from 'mongoose';
+
+import _envFile from './environments.json';
+
+console.log(_envFile);
+const app = express();
 
 mongoose.Promise = global.Promise;
 
@@ -40,9 +44,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-let _envFile = require('./environments.json');
-let _env = eval('_envFile.' + process.env.NODE_ENV);
+const _env = eval('_envFile.' + process.env.NODE_ENV);
 const url = 'mongodb://' + _env.dburl + ':' + _env.dbport + '/' + _env.db;
+
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
       console.log('mongodb started.');
@@ -54,4 +58,4 @@ mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
 })
 
 
-module.exports = app;
+export default app;

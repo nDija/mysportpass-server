@@ -1,4 +1,4 @@
-const User = require('../User.js');
+import User from '../User.js';
 
 class UserRepository {
 
@@ -19,4 +19,4 @@ class UserRepository {
     }
 }
 
-module.exports = new UserRepository(User);
+export default new UserRepository(User);

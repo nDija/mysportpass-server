@@ -1,9 +1,9 @@
-var request = require('supertest');
-var users = require('./data/test/users.json');
+var request from 'supertest');
+var users from './data/test/users.json');
 describe('loading express', function () {
     var app;
     beforeEach(function () {
-        app = require('./app');
+        app from './app');
         server = app.listen(8080, () => {
             //console.log('JSON Server is running');
             db.dropCollection('users');
