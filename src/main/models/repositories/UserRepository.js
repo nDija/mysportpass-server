@@ -19,4 +19,4 @@ class UserRepository {
     }
 }
 
-export default new UserRepository(User);
+export default UserRepository;

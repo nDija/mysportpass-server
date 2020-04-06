@@ -5,7 +5,7 @@ const router = express.Router();
 
 /* GET users listing. */
 router.get('/', UserController.findUsers);
-router.get('/email/', UserController.findByEmail);
+router.get('/email/', new UserController.findByEmail);
 
 /* add user. */
 router.post('/', UserController.createUser);

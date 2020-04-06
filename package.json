@@ -2,15 +2,20 @@
   "name": "server",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
   "babel": {
-    "presets": ["@babel/preset-env"]
+    "presets": [
+      "@babel/preset-env"
+    ]
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production  node bin/www.js",
-    "dev": "cross-env NODE_ENV=development nodemon bin/www.js",
-    "test": "cross-env NODE_ENV=test mocha -R spec spec.js --exit",
-    "transpile": "babel ./ --out-dir dist-server"
+    "start": "npm run prod",
+    "build": "npm-run-all clean transpile",
+    "server": "node ./dist-server/bin/www",
+    "dev": "cross-env NODE_ENV=development npm-run-all build server",
+    "prod": "NODE_ENV=production npm-run-all build server",
+    "test": "cross-env NODE_ENV=test mocha -R spec src/test/spec.js --exit",
+    "transpile": "babel ./src/main/ --out-dir dist-server",
+    "clean": "rimraf dist-server"
   },
   "dependencies": {
     "@babel/cli": "^7.8.4",
@@ -19,13 +24,17 @@
     "cookie-parser": "~1.4.4",
     "cross-env": "^7.0.0",
     "debug": "~2.6.9",
+    "discord.js": "github:discordjs/discord.js",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "mocha": "^7.0.1",
     "mongodb": "^3.5.2",
     "mongoose": "^5.9.7",
     "morgan": "~1.9.1",
+    "npm-run-all": "^4.1.5",
     "pug": "^2.0.4",
+    "rimraf": "^3.0.2",
+    "save": "^2.4.0",
     "supertest": "^4.0.2"
   },
   "devDependencies": {
