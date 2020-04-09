@@ -1,25 +1,25 @@
 import mongoose from 'mongoose';
 
-const Schema = mongoose.Schema;
+class UserSchema extends mongoose.Schema{
+    constructor() {
+        super({
+            name: {
+                type: String,
+                required: true
+            },
+            firstName: {
+                type: String
+            },
+            dateOfBirth: {
+                type: Date
+            },
+            zipCode: {
+                type: Number
+            },
+            email: {
+                type: String
+            }})
+    }}
 
-const schema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    firstName: {
-        type: String
-    },
-    dateOfBirth: {
-        type: Date
-    },
-    zipCode: {
-        type: Number
-    },
-    email: {
-        type: String
-    }
-});
-
-const User = mongoose.model('User', schema);
-export default User;
+class User extends mongoose.Model {}
+export default mongoose.model(User, new UserSchema(), 'users');

@@ -3,7 +3,7 @@ import User from '../User.js';
 class UserRepository {
 
     constructor(model) {
-        this.model = model.User;
+        this.model = model;
     }
 
     create(object) {
@@ -19,4 +19,4 @@ class UserRepository {
     }
 }
 
-export default UserRepository;
+export default new UserRepository(User);

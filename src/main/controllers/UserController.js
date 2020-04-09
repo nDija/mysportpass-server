@@ -1,7 +1,7 @@
 import UserRepository from '../models/repositories/UserRepository.js';
+import User from '../models/User.js';
 
-class UserController {
-
+const UserController = {
     createUser(req, res) {
         const user = req.body;
         UserRepository.create(user)
@@ -16,27 +16,27 @@ class UserController {
                 res.status(500).json(errors);
             }
         });
-    }
+    },
 
     findByEmail(req, res) {
         const email = req.query.email;
-        UserRepository.findByEmail(email)
+        new UserRepository(User).findByEmail(email)
             .then((user) => {
                 res.json(user);
             }).catch((errors) => {
             console.log(errors);
             res.status(500).json(errors);
         });
-    }
+    },
 
     findUsers(req, res) {
-        new UserRepository().findAll()
+        UserRepository.findAll()
             .then((users) => {
                 res.json(users);
             }).catch((errors) => {
             console.log(errors);
             res.status(500).json(errors);
         });
-    }
-}
-export default UserController = new UserController();
+    }}
+
+export default UserController;

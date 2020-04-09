@@ -7,13 +7,10 @@ import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 import mongoose from 'mongoose';
 
-//import config from './environments.json';
 import config from './environments.js';
 
-console.log('config: ');
-console.log(config);
 const app = express();
-
+let dbUrl;
 mongoose.Promise = global.Promise;
 
 app.use(logger('dev'));
@@ -26,14 +23,15 @@ app.use(express.json());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-//import test from 'config';
-console.log(config.development);
-//console.log(eval('default.config'));
-//const _env = eval("(function() { " + 'config.' + process.env.NODE_ENV + '})');
-//console.log(_env);
-const url = 'mongodb://' + config.development.dburl + ':' + config.development.dbport + '/' + config.development.db;
+console.log('Environnement: ' + process.env.NODE_ENV);
 
-mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
+if(process.env.NODE_ENV == 'production') {
+     dbUrl = 'mongodb://' + config.production.dburl + ':' + config.production.dbport + '/' + config.production.db;
+} else {
+    dbUrl = 'mongodb://' + config.development.dburl + ':' + config.development.dbport + '/' + config.development.db;
+}
+
+mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
       console.log('mongodb started.');
       app.listen(8000, () => {
