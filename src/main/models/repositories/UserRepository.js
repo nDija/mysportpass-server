@@ -1,9 +1,9 @@
-const User = require('../User.js');
+import User from '../User.js';
 
 class UserRepository {
 
     constructor(model) {
-        this.model = model.User;
+        this.model = model;
     }
 
     create(object) {
@@ -19,4 +19,4 @@ class UserRepository {
     }
 }
 
-module.exports = new UserRepository(User);
+export default new UserRepository(User);
