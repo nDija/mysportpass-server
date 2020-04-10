@@ -6,8 +6,16 @@ class UserRepository {
         this.model = model;
     }
 
-    create(object) {
-        return this.model.create(object);
+    create(user) {
+        return this.model.create(user);
+    }
+
+    findOneAndUpdate(user) {
+        return this.model.findOneAndUpdate(
+            {email: user.email},
+            user,
+            {new: true}
+            );
     }
 
     findByEmail(email) {
