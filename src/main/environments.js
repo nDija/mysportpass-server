@@ -1,13 +1,16 @@
 export default
 {
-  "development": {
+  development: {
     "dburl": "localhost",
     "dbport": "27017",
     "db": "MySportPass"
   },
-  "test": {
+  test: {
     "dburl": "localhost",
     "dbport": "27017",
     "db": "MySportPassTest"
+  },
+  production: {
+
   }
 }

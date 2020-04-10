@@ -20,8 +20,15 @@
   },
   "nodemonConfig": {
     "exec": "npm run dev",
-    "watch": ["src/main/*", "public/*"],
-    "ignore": ["**/__tests__/**", "*.test.js", "*.spec.js"]
+    "watch": [
+      "src/main/*",
+      "public/*"
+    ],
+    "ignore": [
+      "**/__tests__/**",
+      "*.test.js",
+      "*.spec.js"
+    ]
   },
   "dependencies": {
     "@babel/cli": "^7.8.4",
@@ -32,6 +39,7 @@
     "debug": "~2.6.9",
     "discord.js": "github:discordjs/discord.js",
     "express": "~4.16.1",
+    "express-winston": "^4.0.3",
     "http-errors": "~1.6.3",
     "mocha": "^7.0.1",
     "mongodb": "^3.5.2",
@@ -41,7 +49,8 @@
     "pug": "^2.0.4",
     "rimraf": "^3.0.2",
     "save": "^2.4.0",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
