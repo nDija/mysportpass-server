@@ -19,7 +19,6 @@ const UserController = {
     },
 
     updateUser(req, res) {
-        //const user = new User(req.body);
         UserRepository.findOneAndUpdate(req.body)
             .then((updatedUser) => {
                 res.json(updatedUser);
