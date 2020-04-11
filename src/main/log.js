@@ -35,6 +35,12 @@ const logger = winston.createLogger({
     ]
 });
 
+logger.stream = {
+    write: (info) => {
+        logger.info(info);
+    }
+}
+
 winston.addColors({
     error: 'red',
     warn: 'yellow',
