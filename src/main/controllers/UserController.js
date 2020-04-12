@@ -1,5 +1,4 @@
 import UserRepository from '../models/repositories/UserRepository.js';
-import loggerW from "../app";
 
 const UserController = {
     createUser(req, res) {

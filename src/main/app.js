@@ -28,7 +28,7 @@ logger.info('Environment: ' + process.env.NODE_ENV);
 
 mongoose.Promise = global.Promise;
 let dbUrl = 'mongodb://' + config.dburl + ':' + config.dbport + '/' + config.db;
-mongoose.connect(dbUrl,{useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(dbUrl,{useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
     .then(() => {
         logger.info('Mongodb started on ' + dbUrl);
         app.listen(8000, () => {
