@@ -36,15 +36,19 @@ const logger = winston.createLogger({
 });
 
 logger.stream = {
-    write: (info) => {
-        logger.info(info);
+    write: (msg) => {
+        let code = parseInt(msg.split(' ')[2]); // depend on morgan format...
+        if(code >= 400)
+            logger.error(msg);
+        else
+            logger.debug(msg);
     }
 }
 
 winston.addColors({
     error: 'red',
     warn: 'yellow',
-    info: 'cyan',
+    info: 'white',
     debug: 'green'
 });
 

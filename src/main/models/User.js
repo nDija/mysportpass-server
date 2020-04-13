@@ -20,7 +20,8 @@ class UserSchema extends mongoose.Schema{
                 type: String,
                 index: true,
                 unique: true
-            }})
+            }
+        })
     }}
 class User extends mongoose.Model {}
 export default mongoose.model(User, new UserSchema(), 'users');

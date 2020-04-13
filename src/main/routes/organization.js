@@ -1,30 +1,14 @@
-var express = require('express');
-var router = express.Router();
-var OrganizationController = require('../controllers/OrganizationController.js');
+import Router from 'express';
+import OrganizationController from '../controllers/OrganizationController.js';
+
+const router = Router();
 
 /*
  * GET
  */
 router.get('/', OrganizationController.list);
 
-/*
- * GET
- */
-router.get('/:id', OrganizationController.show);
-
-/*
- * POST
- */
+/* add user. */
 router.post('/', OrganizationController.create);
-
-/*
- * PUT
- */
-router.put('/:id', OrganizationController.update);
-
-/*
- * DELETE
- */
-router.delete('/:id', OrganizationController.remove);
 
 module.exports = router;

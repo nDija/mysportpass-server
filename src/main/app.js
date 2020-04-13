@@ -1,19 +1,17 @@
 import express from 'express';
-import path from 'path';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
-import indexRouter from './routes/index';
-import usersRouter from './routes/users';
+import path from 'path';
 import mongoose from 'mongoose';
-import config from './env.js';
 import logger from './log.js';
-import expressWinston from 'express-winston';
-import winston from "winston";
-
+import indexRouter from './routes/index';
+import usersRouter from './routes/user';
+import organizationsRouter from './routes/organization';
+import config from './env.js';
 
 const app = express();
 
-app.use(morgan('combined', { stream: logger.stream } ));
+app.use(morgan('tiny', { stream: logger.stream } ));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -22,6 +20,7 @@ app.use(express.json());
 /** routes **/
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/organizations/', organizationsRouter);
 /** end routes **/
 
 logger.info('Environment: ' + process.env.NODE_ENV);
@@ -37,9 +36,5 @@ mongoose.connect(dbUrl,{useCreateIndex: true, useNewUrlParser: true, useUnifiedT
     }).catch(() => {
     logger.error('Mongodb connection failed.');
 });
-
-logger.debug('This is debug mess');
-logger.warn('This is warning mess');
-logger.error('This is error mess');
 
 export default app;

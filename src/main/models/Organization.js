@@ -1,8 +1,18 @@
-import mongoose from 'mongoose';
-let Schema   = mongoose.Schema;
+import mongoose from "mongoose";
 
-let OrganizationSchema = new Schema({
-	'name' : String
-});
-
-export default mongoose.model('Organization', OrganizationSchema);
+class OrganizationSchema extends mongoose.Schema{
+	constructor() {
+		super({
+			name: {
+				type: String,
+				required: true,
+				index: true,
+				unique: true
+			},
+			zipCode: {
+				type: Number
+			}
+		})
+	}}
+class Organization extends mongoose.Model {}
+export default mongoose.model(Organization, new OrganizationSchema(), 'organizations');

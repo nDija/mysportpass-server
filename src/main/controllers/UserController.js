@@ -1,8 +1,9 @@
 import UserRepository from '../models/repositories/UserRepository.js';
+import logger from '../log'
 
 const UserController = {
     createUser(req, res) {
-        //loggerW.debug(user);
+        logger.debug(JSON.stringify(req.body));
         UserRepository.create(req.body)
             .then((newUser) => {
                 res.json(newUser);
