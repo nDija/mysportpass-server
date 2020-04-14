@@ -11,8 +11,8 @@ const OrganizationController = {
     create(req, res) {
         logger.debug(JSON.stringify(req.body));
         OrganizationRepository.create(req.body)
-            .then((newUser) => {
-                res.json(newUser);
+            .then((newOrganisation) => {
+                res.json(newOrganisation);
             }).catch((errors) => {
                 if (errors.code == 11000) {
                     logger.error(`${errors.message}`);
