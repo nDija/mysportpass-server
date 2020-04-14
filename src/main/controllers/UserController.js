@@ -1,33 +1,33 @@
-import UserRepository from '../models/repositories/UserRepository.js';
+import UserRepository from '../models/repositories/UserRepository';
 import logger from '../log'
 
 const UserController = {
-    createUser(req, res) {
+    create(req, res) {
         logger.debug(JSON.stringify(req.body));
         UserRepository.create(req.body)
             .then((newUser) => {
                 res.json(newUser);
             }).catch((errors) => {
             if (errors.code == 11000) {
-                console.log(errors);
+                logger.error(errors);
                 res.status(500).json({"msg": "User already exist"});
             } else {
-                console.log(errors);
+                logger.error(errors);
                 res.status(500).json(errors);
             }
         });
     },
 
-    updateUser(req, res) {
+    update(req, res) {
         UserRepository.findOneAndUpdate(req.body)
             .then((updatedUser) => {
                 res.json(updatedUser);
             }).catch((errors) => {
             if (errors.code == 11000) {
-                console.log(errors);
+                logger.error(errors);
                 res.status(500).json({"msg": "User already exist"});
             } else {
-                console.log(errors);
+                logger.error(errors);
                 res.status(500).json(errors);
             }
         });
@@ -39,17 +39,17 @@ const UserController = {
             .then((user) => {
                 res.json(user);
             }).catch((errors) => {
-            console.log(errors);
+            logger.error(errors);
             res.status(500).json(errors);
         });
     },
 
-    findUsers(req, res) {
+    list(req, res) {
         UserRepository.findAll()
             .then((users) => {
                 res.json(users);
             }).catch((errors) => {
-            console.log(errors);
+            logger.error(errors);
             res.status(500).json(errors);
         });
     }}

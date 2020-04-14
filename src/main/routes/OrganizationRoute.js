@@ -1,5 +1,5 @@
 import Router from 'express';
-import OrganizationController from '../controllers/OrganizationController.js';
+import OrganizationController from '../controllers/OrganizationController';
 
 const router = Router();
 
@@ -11,4 +11,4 @@ router.get('/', OrganizationController.list);
 /* add user. */
 router.post('/', OrganizationController.create);
 
-module.exports = router;
+export default router;
