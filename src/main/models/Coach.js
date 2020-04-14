@@ -15,4 +15,4 @@ class CoachSchema extends mongoose.Schema{
         })
     }}
 class Coach extends mongoose.Model {}
-export default mongoose.model(Coach, new CoachSchema(), 'Coaches');
+export default mongoose.model(Coach, new CoachSchema(), 'coaches');
