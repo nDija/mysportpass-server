@@ -4,7 +4,6 @@ import config from "./env";
 const logger = winston.createLogger({
     level: config.logLevel,
     handleExceptions: true,
-    json: true,
     maxsize: 5242880, // 5MB
     maxFiles: 5,
     colorize: false,
@@ -12,9 +11,8 @@ const logger = winston.createLogger({
         winston.format.timestamp({
             format: 'YYYY-MM-DD HH:mm:ss'
         }),
-        winston.format.json()
+        winston.format.simple()
     ),
-    //defaultMeta: { service: 'user-service' },
     transports: [
         //
         // - Write all logs with level `error` and below to `error.log`

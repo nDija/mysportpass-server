@@ -1,5 +1,6 @@
 import OrganizationRepository from '../models/repositories/OrganizationRepository.js';
 import logger from '../log.js';
+import {addColors} from "winston";
 
 /**
  * OrganizationController.js
@@ -16,11 +17,11 @@ const OrganizationController = {
             }).catch((errors) => {
                 if (errors.code == 11000) {
                     logger.error(`${errors.message}`);
-                    logger.info(`${errors.stack}`);
+                    logger.error(`${errors.stack}`);
                     res.status(500).json({"msg": "Organization already exist"});
                 } else {
                     logger.error(errors);
-                    res.status(500).json(errors);
+                    res.status(500).json('an error has occurred');
                 }
              });
     },
