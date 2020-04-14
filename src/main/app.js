@@ -8,6 +8,7 @@ import indexRouter from './routes/IndexRoute';
 import usersRouter from './routes/UserRoute';
 import organizationsRouter from './routes/OrganizationRoute';
 import coachesRouter from './routes/CoachRoute';
+import subscriptionsRouter from './routes/SubscriptionRoute';
 import config from './env';
 
 const app = express();
@@ -23,6 +24,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/organizations/', organizationsRouter);
 app.use('/coaches/', coachesRouter);
+app.use('/subscriptions/', subscriptionsRouter);
 /** end routes **/
 
 logger.info('Environment: ' + process.env.NODE_ENV);
