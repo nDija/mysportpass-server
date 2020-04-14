@@ -1,4 +1,4 @@
-import Organization from '../Organization.js';
+import Organization from '../Organization';
 
 class OrganizationRepository {
 

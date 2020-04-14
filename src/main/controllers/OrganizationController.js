@@ -1,6 +1,5 @@
-import OrganizationRepository from '../models/repositories/OrganizationRepository.js';
-import logger from '../log.js';
-import {addColors} from "winston";
+import OrganizationRepository from '../models/repositories/OrganizationRepository';
+import logger from '../log';
 
 /**
  * OrganizationController.js

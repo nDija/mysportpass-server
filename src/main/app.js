@@ -3,11 +3,12 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import path from 'path';
 import mongoose from 'mongoose';
-import logger from './log.js';
-import indexRouter from './routes/index';
-import usersRouter from './routes/user';
-import organizationsRouter from './routes/organization';
-import config from './env.js';
+import logger from './log';
+import indexRouter from './routes/IndexRoute';
+import usersRouter from './routes/UserRoute';
+import organizationsRouter from './routes/OrganizationRoute';
+import coachesRouter from './routes/CoachRoute';
+import config from './env';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/organizations/', organizationsRouter);
+app.use('/coaches/', coachesRouter);
 /** end routes **/
 
 logger.info('Environment: ' + process.env.NODE_ENV);
