@@ -1,19 +1,19 @@
 import mongoose from "mongoose";
 
-class CoachSchema extends mongoose.Schema{
+class CourseSchema extends mongoose.Schema{
     constructor() {
         super({
-            email: {
+            name: {
                 type: String,
                 required: true,
                 index: true,
                 unique: true
             },
-            name: {
-                type: String
+            zipCode: {
+                type: Number
             }
         })
     }
 }
-class Coach extends mongoose.Model {}
-export default mongoose.model(Coach, new CoachSchema(), 'coaches');
+class Course extends mongoose.Model {}
+export default mongoose.model(Course, new CourseSchema(), 'courses');

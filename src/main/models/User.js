@@ -22,6 +22,7 @@ class UserSchema extends mongoose.Schema{
                 unique: true
             }
         })
-    }}
+    }
+}
 class User extends mongoose.Model {}
 export default mongoose.model(User, new UserSchema(), 'users');

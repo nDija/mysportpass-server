@@ -7,14 +7,14 @@ const UserController = {
         UserRepository.create(req.body)
             .then((newUser) => {
                 res.json(newUser);
-            }).catch((errors) => {
-            if (errors.code == 11000) {
-                logger.error(errors);
-                res.status(500).json({"msg": "User already exist"});
-            } else {
-                logger.error(errors);
-                res.status(500).json(errors);
-            }
+            }).catch((error) => {
+                if (error.code == 11000) {
+                    logger.error(error);
+                    res.status(500).json({"msg": "User already exist"});
+                } else {
+                    logger.error(error);
+                    res.status(500).json(error);
+                }
         });
     },
 
@@ -22,14 +22,14 @@ const UserController = {
         UserRepository.findOneAndUpdate(req.body)
             .then((updatedUser) => {
                 res.json(updatedUser);
-            }).catch((errors) => {
-            if (errors.code == 11000) {
-                logger.error(errors);
-                res.status(500).json({"msg": "User already exist"});
-            } else {
-                logger.error(errors);
-                res.status(500).json(errors);
-            }
+            }).catch((error) => {
+                if (error.code == 11000) {
+                    logger.error(error);
+                    res.status(500).json({"msg": "User already exist"});
+                } else {
+                    logger.error(error);
+                    res.status(500).json(error);
+                }
         });
     },
 
@@ -38,20 +38,21 @@ const UserController = {
         UserRepository.findByEmail(email)
             .then((user) => {
                 res.json(user);
-            }).catch((errors) => {
-            logger.error(errors);
-            res.status(500).json(errors);
-        });
+            }).catch((error) => {
+                logger.error(error);
+                res.status(500).json(error);
+            });
     },
 
     list(req, res) {
         UserRepository.findAll()
             .then((users) => {
                 res.json(users);
-            }).catch((errors) => {
-            logger.error(errors);
-            res.status(500).json(errors);
-        });
-    }}
+            }).catch((error) => {
+                logger.error(error);
+                res.status(500).json(error);
+            });
+    }
+}
 
 export default UserController;

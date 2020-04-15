@@ -13,13 +13,13 @@ const OrganizationController = {
         OrganizationRepository.create(req.body)
             .then((newOrganisation) => {
                 res.json(newOrganisation);
-            }).catch((errors) => {
-                if (errors.code == 11000) {
-                    logger.error(`${errors.message}`);
-                    logger.error(`${errors.stack}`);
+            }).catch((error) => {
+                if (error.code == 11000) {
+                    logger.error(`${error.message}`);
+                    logger.error(`${error.stack}`);
                     res.status(500).json({"msg": "Organization already exist"});
                 } else {
-                    logger.error(errors);
+                    logger.error(error);
                     res.status(500).json('an error has occurred');
                 }
              });

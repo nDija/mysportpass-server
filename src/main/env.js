@@ -2,10 +2,11 @@ const config = function(){
   switch(process.env.NODE_ENV){
     case 'development':
       return {
+        "port": 8000,
         "logPath": "./logs/",
         "logLevel": "debug",
-        "dburl": "localhost",
-        "dbport": "27017",
+        "dbUrl": "localhost",
+        "dbPort": "27017",
         "db": "MySportPass"
       };
 

@@ -7,6 +7,7 @@ class SubscriptionSchema extends mongoose.Schema{
                 type: String
             }
         })
-    }}
+    }
+}
 class Subscription extends mongoose.Model {}
 export default mongoose.model(Subscription, new SubscriptionSchema(), 'subscriptions');

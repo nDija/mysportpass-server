@@ -13,6 +13,7 @@ class OrganizationSchema extends mongoose.Schema{
 				type: Number
 			}
 		})
-	}}
+	}
+}
 class Organization extends mongoose.Model {}
 export default mongoose.model(Organization, new OrganizationSchema(), 'organizations');

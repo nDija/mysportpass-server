@@ -13,27 +13,27 @@ const CoachController = {
         CoachRepository.create(req.body)
             .then((newCoach) => {
                 res.json(newCoach);
-            }).catch((errors) => {
-            if (errors.code == 11000) {
-                logger.error(`${errors.message}`);
-                logger.error(`${errors.stack}`);
+            }).catch((error) => {
+            if (error.code == 11000) {
+                logger.error(`${error.message}`);
+                logger.error(`${error.stack}`);
                 res.status(500).json({"msg": "Coach already exist"});
             } else {
-                logger.error(errors);
+                logger.error(error);
                 res.status(500).json('an error has occurred');
             }
         });
     },
 
     /**
-     * OrganizationController.list()
+     * CoachController.list()
      */
     list(req, res) {
         CoachRepository.find()
             .then((coaches) => {
                 res.json(coaches);
-            }).catch((errors) => {
-                logger.error(errors);
+            }).catch((error) => {
+                logger.error(error);
                 res.status(500).json({
                     message: 'Error when getting Coaches.',
                     error: error
