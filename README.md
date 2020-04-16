@@ -1,5 +1,7 @@
 npm install
 
+npm run watch:dev // load nodemon
+
 DEBUG=server:* npm start
 
 ./bin/mongod --dbpath ./data/db
