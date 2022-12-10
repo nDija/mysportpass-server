@@ -39,7 +39,7 @@
     "cross-env": "^7.0.0",
     "debug": "~2.6.9",
     "discord.js": "github:discordjs/discord.js",
-    "express": "~4.16.1",
+    "express": "~4.18.2",
     "express-winston": "^4.0.3",
     "http-errors": "~1.6.3",
     "mocha": "^7.0.1",
